@@ -14,6 +14,17 @@ def home():
     </form>
     '''
 
+# @app.route("/result")
+# def result():
+#     m1 = float(request.args.get("m1"))
+#     m2 = float(request.args.get("m2"))
+#     m3 = float(request.args.get("m3"))
+
+#     total = m1 + m2 + m3
+#     avg = total / 3
+
+#     return f"Total: {total}, Average: {avg}"
+
 @app.route("/result")
 def result():
     m1 = float(request.args.get("m1"))
@@ -23,7 +34,10 @@ def result():
     total = m1 + m2 + m3
     avg = total / 3
 
-    return f"Total: {total}, Average: {avg}"
+    grade = "A" if avg >= 80 else "B" if avg >= 60 else "C"
+
+    return f"Total: {total}, Average: {avg}, Grade: {grade}"
+    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
